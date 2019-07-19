@@ -125,14 +125,18 @@ def list_folders():
 
 def get_subscription_list():
     client = get_client()
-    for item in client.get_subscription_list():
-        print(item.__dict__)
+    with open("/home/mi/sub_list.txt", "a+") as f:
+        for item in client.get_subscription_list():
+            print(item.__dict__)
+            f.write(str(item.__dict__) + "\r")
 
 
 def get_stream_contents(stream_id):
     client = get_client()
-    for item in client.get_stream_contents(stream_id):
-        print(item.__dict__)
+    with open("/home/mi/juzimi.txt", "a+") as f:
+        for item in client.get_stream_contents(stream_id):
+            print(item.__dict__)
+            f.write(str(item.__dict__) + "\r\n")
 
 
 def add_tags_list_parser(subparsers):
